@@ -67,3 +67,39 @@ TEST_CASE("2, too close", ""){
             "0"
     );
 }
+
+TEST_CASE("3, all far enough", ""){
+    std::stringstream input(
+            "3 100\n"
+            "1 300 1000000001\n"
+    );
+    std::stringstream output;
+    parseFile(input,output);
+    REQUIRE(output.str() ==
+            "3"
+    );
+}
+
+TEST_CASE("3, 2 far enough", ""){
+    std::stringstream input(
+            "3 3\n"
+            "1 2 7\n"
+    );
+    std::stringstream output;
+    parseFile(input,output);
+    REQUIRE(output.str() ==
+            "2"
+    );
+}
+
+TEST_CASE("r=1", ""){
+    std::stringstream input(
+            "4 1\n"
+            "1 2 4 5\n"
+    );
+    std::stringstream output;
+    parseFile(input,output);
+    REQUIRE(output.str() ==
+            "4"
+    );
+}
